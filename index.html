@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>uvm logo gif</title>
-    <link rel="stylesheet" href="style.css" />
     <style>
         ::-webkit-scrollbar {
   display: none;
@@ -240,20 +239,12 @@ animation path
         blob1.animate({ d: blob4Points }, speed, easing);
       };
 
-      function animOnScroll() {
-        newValue = window.scrollY;
-        if (oldValue < newValue) {
-          callRandomFunction();
-        } else if (oldValue > newValue) {
-          callRandomFunction();
-        }
-        oldValue = newValue;
-      }
-
+      var count = 0;
       function callRandomFunction() {
+       
         var random = Math.floor(Math.random() * 4);
-        console.log(random);
-        switch (random) {
+        console.log(count);
+        switch (count) {
           case 0:
             toBlob1();
             break;
@@ -274,7 +265,12 @@ animation path
 
       function animLoop() {
         setInterval(function () {
-          callRandomFunction();
+           if(count > 4 ) {
+            count = 0;
+           }   else {
+            count ++; 
+           } 
+            callRandomFunction();
         }, 1000);
       }
 
